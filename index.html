@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подарки</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #17212b;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h2 { margin-bottom: 5px; }
+        .subtitle { color: #8b969f; font-size: 14px; margin-bottom: 20px; }
+        .tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .tab { color: #8b969f; cursor: pointer; font-weight: bold; }
+        .tab.active { color: white; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .gift-card {
+            background-color: #212d3b;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+        }
+        .gift-card:active { background-color: #2b394a; }
+        .gift-img { font-size: 40px; margin: 10px 0; }
+        .price {
+            background-color: #17212b;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #f1c40f;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .price::before { content: '⭐'; }
+    </style>
+</head>
+<body>
+    <div style="font-size: 50px; margin-top: 10px;">👤</div>
+    <h2>Купить подарок</h2>
+    <div class="subtitle">Подарок можно добавить в профиль или отложить.<br>Редкий подарок можно превратить в коллекционный и затем подарить другому пользователю.</div>
+    
+    <div class="tabs">
+        <div class="tab active">Все</div>
+        <div class="tab">Коллекционные</div>
+    </div>
+
+    <div class="grid">
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">💖</div>
+            <div class="price">15</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">🧸</div>
+            <div class="price">15</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">🎁</div>
+            <div class="price">25</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">🌹</div>
+            <div class="price">35</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">🎂</div>
+            <div class="price">50</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">💐</div>
+            <div class="price">50</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">🚀</div>
+            <div class="price">50</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">🏆</div>
+            <div class="price">100</div>
+        </div>
+        <div class="gift-card" onclick="sendGift()">
+            <div class="gift-img">💎</div>
+            <div class="price">100</div>
+        </div>
+    </div>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function sendGift() {
+            // Показываем алерт, чтобы казалось, что идет обработка
+            tg.showAlert("Оформляем подарок...", () => {
+                // Перекидываем в профиль для реальной отправки
+                tg.openTelegramLink("tg://resolve?domain=rattiixx");
+                tg.close();
+            });
+        }
+    </script>
+</body>
+</html>
